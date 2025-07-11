@@ -27,6 +27,7 @@
             color: #333;
             line-height: 1.6;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f9f7f1"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23e8e3d3" stroke-width="0.5"/></svg>');
+            padding-top: 80px;
         }
         
         .container {
@@ -98,6 +99,7 @@
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 15px 0;
+            transition: all 0.3s ease;
         }
         
         .header-container {
@@ -166,12 +168,13 @@
             display: flex;
             align-items: center;
             background: linear-gradient(rgba(62, 39, 35, 0.7), rgba(62, 39, 35, 0.7)), 
-                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23d2b48c" opacity="0.2"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23a52a2a" stroke-width="0.3" opacity="0.2"/></svg>');
+                        url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
             position: relative;
+            margin-top: -80px;
         }
         
         .hero-content {
@@ -217,15 +220,9 @@
             flex: 1;
             min-width: 300px;
             height: 400px;
-            background: var(--secondary);
+            background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2053&auto=format&fit=crop') center/cover;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--dark);
-            opacity: 0.8;
             border: 15px solid var(--light);
         }
         
@@ -260,6 +257,18 @@
             justify-content: center;
             color: var(--dark);
             font-size: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .work-card:hover .work-image img {
+            transform: scale(1.1);
         }
         
         .work-content {
@@ -294,6 +303,11 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .event-item:hover {
+            transform: translateY(-5px);
         }
         
         .event-date {
@@ -365,6 +379,13 @@
             color: var(--dark);
             border: 5px solid white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .member-card h3 {
@@ -537,6 +558,50 @@
                 justify-content: center;
                 gap: 15px;
             }
+            
+            .about-image, .contact-info, .contact-form {
+                min-width: 100%;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        /* 表单成功消息 */
+        .success-message {
+            display: none;
+            background: #dff0d8;
+            color: #3c763d;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -563,7 +628,7 @@
 
     <!-- 头部展示区 -->
     <section class="hero" id="home">
-        <div class="hero-content">
+        <div class="hero-content animate">
             <h1>用文字书写灵魂</h1>
             <p>岳阳县第二中学“新笔”文学社创建于1984年，是培养文学青年阵地，也是学校办学特色之一，墨韵新章，文心筑梦，至今已有上万名文学社会员从学校毕业并走上理想的工作岗位，成为社会主义事业的建设人才。文学社创办有校刊《新笔》、校报《心雨》，被评为全国“十佳百优文学社团”、湖南省优秀文学社团。</p>
             <div class="hero-buttons">
@@ -576,18 +641,16 @@
     <!-- 关于我们 -->
     <section class="about" id="about">
         <div class="container">
-            <h2>关于我们</h2>
+            <h2 class="animate">关于我们</h2>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text animate delay-1">
                     <p>新笔文学社是一个以开展文学类主题活动、具有文学特色的学习型社团。文学社以“发展校园文化，增强人文气息，赓续二中文脉”为主旨，传播校园文化，丰富和发展成员的兴趣、爱好、专长，让梦想在笔尖绽放，让情感在字里行间中流淌。</p>
                     <p>我们的宗旨是"以文会友，以笔写心"，致力于为文学爱好者提供创作、交流和展示的平台。</p>
                     <p>社团定期组织写作工作坊、读书分享会、诗歌朗诵会等活动，并出版内部刊物《年轻的心》，收录社员优秀作品。</p>
                     <p>无论你是经验丰富的作家，还是初涉写作的新人，只要你对文字怀有热情，都欢迎加入我们的大家庭。</p>
                     <a href="#contact" class="btn" style="margin-top: 20px;">了解更多</a>
                 </div>
-                <div class="about-image">
-                    <i class="fas fa-book-open"></i>
-                </div>
+                <div class="about-image animate delay-2"></div>
             </div>
         </div>
     </section>
@@ -595,23 +658,23 @@
     <!-- 作品展示 -->
     <section class="works" id="works">
         <div class="container">
-            <h2>精选作品</h2>
+            <h2 class="animate">精选作品</h2>
             <div class="works-grid">
-                <div class="work-card">
+                <div class="work-card animate">
                     <div class="work-image">
-                        <i class="fas fa-feather"></i>
+                        <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=1974&auto=format&fit=crop" alt="灯火可亲处，山河万里明">
                     </div>
                     <div class="work-content">
                         <h3>《灯火可亲处，山河万里明》</h3>
-                        <div class="work-meta"> 文· ——24210贺骞容 · 2025年5月</div>
+                        <div class="work-meta"> 文本· ——24210贺骞容 · 2025年5月</div>
                         <p>时光的指尖叩响记忆的门扉，那些曾以生命为炬火照亮人间长夜的伟人，如同永不熄灭的灯盏...</p>
                         <a href="#" class="btn" style="background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-top: 10px;">成为她的粉丝</a>
                     </div>
                 </div>
                 
-                <div class="work-card">
+                <div class="work-card animate delay-1">
                     <div class="work-image">
-                        <i class="fas fa-book"></i>
+                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1998&auto=format&fit=crop" alt="秋日笔记">
                     </div>
                     <div class="work-content">
                         <h3>秋日笔记</h3>
@@ -621,9 +684,9 @@
                     </div>
                 </div>
                 
-                <div class="work-card">
+                <div class="work-card animate delay-2">
                     <div class="work-image">
-                        <i class="fas fa-pen-fancy"></i>
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2053&auto=format&fit=crop" alt="时光旅人">
                     </div>
                     <div class="work-content">
                         <h3>时光旅人</h3>
@@ -639,22 +702,22 @@
     <!-- 活动预告 -->
     <section class="events" id="events">
         <div class="container">
-            <h2>近期活动</h2>
+            <h2 class="animate">近期活动</h2>
             <div class="event-list">
-                <div class="event-item">
+                <div class="event-item animate">
                     <div class="event-date">
-                        <div class="day">.</div>
-                        <div class="month">.月</div>
+                        <div class="day">15</div>
+                        <div class="month">七月</div>
                     </div>
                     <div class="event-details">
-                        <h3>待定</h3>
-                        <p><strong>时间：</strong>....年..月.日 14:00-17:00</p>
-                        <p><strong>地点：</strong>待定</p>
+                        <h3>夏季诗歌创作工作坊</h3>
+                        <p><strong>时间：</strong>2025年7月15日 14:00-17:00</p>
+                        <p><strong>地点：</strong>文学社会议室</p>
                         <p>特邀诗人张明指导，探索现代诗歌创作技巧，寻找属于你的诗意表达。</p>
                     </div>
                 </div>
                 
-                <div class="event-item">
+                <div class="event-item animate delay-1">
                     <div class="event-date">
                         <div class="day">22</div>
                         <div class="month">七月</div>
@@ -667,14 +730,14 @@
                     </div>
                 </div>
                 
-                <div class="event-item">
+                <div class="event-item animate delay-2">
                     <div class="event-date">
                         <div class="day">05</div>
                         <div class="month">八月</div>
                     </div>
                     <div class="event-details">
                         <h3>新社员招募暨迎新会</h3>
-                        <p><strong>时间：</strong>20？？年？月？日 10:00-12:00</p>
+                        <p><strong>时间：</strong>2025年8月5日 10:00-12:00</p>
                         <p><strong>地点：</strong>学生活动中心大厅</p>
                         <p>欢迎所有热爱文学的同学加入，了解社团历史与活动安排。</p>
                     </div>
@@ -686,38 +749,38 @@
     <!-- 社员风采 -->
     <section class="members" id="members">
         <div class="container">
-            <h2>社员风采</h2>
+            <h2 class="animate">社员风采</h2>
             <div class="members-grid">
-                <div class="member-card">
+                <div class="member-card animate">
                     <div class="member-avatar">
-                        <i class="fas fa-user"></i>
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop" alt="贺骞容">
                     </div>
                     <h3>贺骞容</h3>
                     <div class="member-role">副社长</div>
                     <p>"写作是我与世界对话的方式，每个字都是心跳的印记。"</p>
                 </div>
                 
-                <div class="member-card">
+                <div class="member-card animate delay-1">
                     <div class="member-avatar">
-                        <i class="fas fa-user"></i>
+                        <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0e16019?q=80&w=1974&auto=format&fit=crop" alt="王墨">
                     </div>
                     <h3>王墨</h3>
                     <div class="member-role">散文组负责人</div>
                     <p>"在平凡中发现不平凡，是散文的魅力所在。"</p>
                 </div>
                 
-                <div class="member-card">
+                <div class="member-card animate delay-2">
                     <div class="member-avatar">
-                        <i class="fas fa-user"></i>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" alt="陈文轩">
                     </div>
                     <h3>陈文轩</h3>
                     <div class="member-role">小说创作组</div>
                     <p>"构建一个世界，让角色在其中自由生长，这是最迷人的创作过程。"</p>
                 </div>
                 
-                <div class="member-card">
+                <div class="member-card animate delay-3">
                     <div class="member-avatar">
-                        <i class="fas fa-user"></i>
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop" alt="赵清扬">
                     </div>
                     <h3>赵清扬</h3>
                     <div class="member-role">社团主席</div>
@@ -730,9 +793,9 @@
     <!-- 联系我们 -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2>联系我们</h2>
+            <h2 class="animate">联系我们</h2>
             <div class="contact-wrapper">
-                <div class="contact-info">
+                <div class="contact-info animate">
                     <h3>加入新笔文学社</h3>
                     <p>欢迎热爱文学创作的同学加入我们！无论你是写作新手还是经验丰富的作者，都能在这里找到志同道合的伙伴。</p>
                     
@@ -752,7 +815,7 @@
                         </div>
                         <div>
                             <h4>邮箱</h4>
-                            <p>其实还没有@xinbi-literature.com</p>
+                            <p>contact@xinbi-literature.com</p>
                         </div>
                     </div>
                     
@@ -762,51 +825,69 @@
                         </div>
                         <div>
                             <h4>电话</h4>
-                            <p>+86 123 4567 8910（没有）</p>
+                            <p>+86 123 4567 8910</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>开放时间</h4>
+                            <p>周一至周五: 15:00-18:00</p>
                         </div>
                     </div>
                 </div>
                 
-              <div class="contact-form">
-    <h3>加入申请</h3>
-    <form 
-        action="https://formspree.io/f/mwpbgngv" 
-        method="POST"
-        enctype="multipart/form-data"
-    >
-        <!-- 为每个input添加name属性 -->
-        <div class="form-group">
-            <label for="name">姓名</label>
-            <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="email">邮箱</label>
-            <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="phone">电话</label>
-            <input type="tel" id="phone" name="phone" placeholder="请输入您的电话">
-        </div>
-        
-        <div class="form-group">
-            <label for="interest">兴趣方向</label>
-            <input type="text" id="interest" name="interest" placeholder="诗歌、散文、小说等">
-        </div>
-        
-        <div class="form-group">
-            <label for="message">个人简介及申请原因</label>
-            <textarea id="message" name="message" placeholder="请简单介绍自己并说明为什么想加入我们..." required></textarea>
-        </div>
-        
-        <!-- 防垃圾邮件和邮件标题优化 -->
-        <input type="text" name="_gotcha" style="display:none">
-        <input type="hidden" name="_subject" value="新申请：来自{{name}}">
-        
-        <button type="submit" class="btn">提交申请</button>
-    </form>
-</div>
+                <div class="contact-form animate delay-1">
+                    <h3>加入申请</h3>
+                    <form id="membership-form" action="https://formspree.io/f/mwpbgngv" method="POST">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">电话</label>
+                            <input type="tel" id="phone" name="phone" placeholder="请输入您的电话">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="grade">年级</label>
+                            <select id="grade" name="grade" required>
+                                <option value="">请选择年级</option>
+                                <option value="高一">高一</option>
+                                <option value="高二">高二</option>
+                                <option value="高三">高三</option>
+                                <option value="教师">教师</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest">兴趣方向</label>
+                            <input type="text" id="interest" name="interest" placeholder="诗歌、散文、小说等">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">个人简介及申请原因</label>
+                            <textarea id="message" name="message" placeholder="请简单介绍自己并说明为什么想加入我们..." required></textarea>
+                        </div>
+                        
+                        <input type="hidden" name="_subject" value="新笔文学社申请：来自网站">
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <button type="submit" class="btn">提交申请</button>
+                    </form>
+                    <div id="success-message" class="success-message">
+                        申请已提交成功！我们将尽快与您联系。
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -822,7 +903,7 @@
                     <a href="#"><i class="fab fa-weixin"></i></a>
                     <a href="#"><i class="fab fa-weibo"></i></a>
                     <a href="#"><i class="fab fa-qq"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             
@@ -855,13 +936,60 @@
             }
         });
 
+        // 滚动动画
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 50) {
+                    element.style.animationPlayState = 'running';
+                    element.style.opacity = 1;
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
         // 表单提交处理
-        const form = document.querySelector('.contact-form form');
+        const form = document.getElementById('membership-form');
+        const successMessage = document.getElementById('success-message');
+        
         if (form) {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                alert('感谢您的申请！我们将尽快与您联系。');
-                form.reset();
+                
+                // 显示加载状态
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = '提交中...';
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        successMessage.style.display = 'block';
+                        form.reset();
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    } else {
+                        alert('提交失败，请稍后再试。');
+                    }
+                } catch (error) {
+                    alert('网络错误，请检查您的连接。');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '提交申请';
+                }
             });
         }
     </script>
