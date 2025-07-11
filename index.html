@@ -603,7 +603,7 @@
                     </div>
                     <div class="work-content">
                         <h3>《灯火可亲处，山河万里明》</h3>
-                        <div class="work-meta"> 文本· ——24210贺骞容 · 2025年5月</div>
+                        <div class="work-meta"> 文· ——24210贺骞容 · 2025年5月</div>
                         <p>时光的指尖叩响记忆的门扉，那些曾以生命为炬火照亮人间长夜的伟人，如同永不熄灭的灯盏...</p>
                         <a href="#" class="btn" style="background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-top: 10px;">成为她的粉丝</a>
                     </div>
@@ -643,13 +643,13 @@
             <div class="event-list">
                 <div class="event-item">
                     <div class="event-date">
-                        <div class="day">15</div>
-                        <div class="month">七月</div>
+                        <div class="day">.</div>
+                        <div class="month">.月</div>
                     </div>
                     <div class="event-details">
-                        <h3>夏季诗歌创作工作坊</h3>
-                        <p><strong>时间：</strong>2025年7月15日 14:00-17:00</p>
-                        <p><strong>地点：</strong>文学社会议室</p>
+                        <h3>待定</h3>
+                        <p><strong>时间：</strong>....年..月.日 14:00-17:00</p>
+                        <p><strong>地点：</strong>待定</p>
                         <p>特邀诗人张明指导，探索现代诗歌创作技巧，寻找属于你的诗意表达。</p>
                     </div>
                 </div>
@@ -767,37 +767,46 @@
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h3>加入申请</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">姓名</label>
-                            <input type="text" id="name" placeholder="请输入您的姓名" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">邮箱</label>
-                            <input type="email" id="email" placeholder="请输入您的邮箱" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">电话</label>
-                            <input type="tel" id="phone" placeholder="请输入您的电话">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="interest">兴趣方向</label>
-                            <input type="text" id="interest" placeholder="诗歌、散文、小说等">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">个人简介及申请原因</label>
-                            <textarea id="message" placeholder="请简单介绍自己并说明为什么想加入我们..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">提交申请</button>
-                    </form>
-                </div>
+              <div class="contact-form">
+    <h3>加入申请</h3>
+    <form 
+        action="https://formspree.io/f/mwpbgngv" 
+        method="POST"
+        enctype="multipart/form-data"
+    >
+        <!-- 为每个input添加name属性 -->
+        <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">电话</label>
+            <input type="tel" id="phone" name="phone" placeholder="请输入您的电话">
+        </div>
+        
+        <div class="form-group">
+            <label for="interest">兴趣方向</label>
+            <input type="text" id="interest" name="interest" placeholder="诗歌、散文、小说等">
+        </div>
+        
+        <div class="form-group">
+            <label for="message">个人简介及申请原因</label>
+            <textarea id="message" name="message" placeholder="请简单介绍自己并说明为什么想加入我们..." required></textarea>
+        </div>
+        
+        <!-- 防垃圾邮件和邮件标题优化 -->
+        <input type="text" name="_gotcha" style="display:none">
+        <input type="hidden" name="_subject" value="新申请：来自{{name}}">
+        
+        <button type="submit" class="btn">提交申请</button>
+    </form>
+</div>
             </div>
         </div>
     </section>
