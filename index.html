@@ -93,6 +93,17 @@
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
         
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
         /* 导航栏样式 */
         header {
             background-color: rgba(249, 247, 241, 0.95);
@@ -235,6 +246,28 @@
             background-color: var(--light);
         }
         
+        .works-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid var(--primary);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
         .works-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -247,6 +280,9 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .work-card:hover {
@@ -262,6 +298,7 @@
             color: var(--dark);
             font-size: 1.5rem;
             overflow: hidden;
+            position: relative;
         }
         
         .work-image img {
@@ -275,8 +312,22 @@
             transform: scale(1.1);
         }
         
+        .work-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
         .work-content {
             padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .work-content h3 {
@@ -294,6 +345,24 @@
             margin-top: 10px;
             color: #777;
             font-size: 0.9rem;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .work-stats span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .work-stats span.active i {
+            color: var(--accent);
+        }
+        
+        .read-more-btn {
+            margin-top: auto;
+            align-self: flex-start;
         }
         
         /* 活动预告 */
@@ -344,6 +413,8 @@
         .event-details {
             padding: 20px;
             flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .event-details h3 {
@@ -354,7 +425,8 @@
         .countdown {
             display: flex;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: auto;
+            padding-top: 15px;
         }
         
         .countdown-item {
@@ -444,6 +516,54 @@
             border-top: 1px dashed rgba(139, 69, 19, 0.3);
         }
         
+        /* 投稿部分样式 */
+        .submission {
+            background: linear-gradient(to bottom, var(--light), white);
+        }
+        
+        .submission-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
         /* 联系方式 */
         .contact {
             background: linear-gradient(to bottom, white, var(--light));
@@ -493,40 +613,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--accent);
-            outline: none;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
         /* 页脚 */
         footer {
             background: var(--dark);
@@ -538,6 +624,9 @@
         .footer-content {
             max-width: 800px;
             margin: 0 auto 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .social-links {
@@ -606,7 +695,7 @@
                 gap: 15px;
             }
             
-            .about-image, .contact-info, .contact-form {
+            .about-image, .contact-info, .contact-form, .submission-form {
                 min-width: 100%;
             }
             
@@ -653,43 +742,6 @@
             border-radius: 4px;
             margin-top: 20px;
             text-align: center;
-        }
-        
-        /* 作品轮播 */
-        .works-carousel {
-            position: relative;
-            overflow: hidden;
-            margin: 0 auto;
-            max-width: 1000px;
-        }
-        
-        .swiper {
-            padding: 30px 0;
-        }
-        
-        .swiper-pagination-bullet {
-            background: var(--primary);
-            opacity: 0.5;
-            width: 12px;
-            height: 12px;
-        }
-        
-        .swiper-pagination-bullet-active {
-            background: var(--accent);
-            opacity: 1;
-        }
-        
-        .swiper-button-next, .swiper-button-prev {
-            color: var(--primary);
-            background: rgba(255, 255, 255, 0.7);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .swiper-button-next:after, .swiper-button-prev:after {
-            font-size: 1.2rem;
         }
         
         /* 返回顶部按钮 */
@@ -775,6 +827,8 @@
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
         }
         
         .close-btn {
@@ -796,6 +850,7 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--secondary);
+            word-wrap: break-word;
         }
         
         .article-meta {
@@ -819,6 +874,14 @@
             object-fit: cover;
             margin-bottom: 20px;
             border-radius: 8px;
+        }
+        
+        .article-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
         }
         
         /* 搜索相关样式 */
@@ -967,6 +1030,9 @@
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .portal-card:hover {
@@ -990,6 +1056,7 @@
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 15px;
+            flex: 1;
         }
         
         .portal-link {
@@ -1020,13 +1087,16 @@
         
         body.dark-mode-active .about,
         body.dark-mode-active .members,
-        body.dark-mode-active .contact-form {
+        body.dark-mode-active .contact-form,
+        body.dark-mode-active .submission-form {
             background-color: #2d2d2d;
             color: #e0e0e0;
         }
         
         body.dark-mode-active .works,
-        body.dark-mode-active .events {
+        body.dark-mode-active .events,
+        body.dark-mode-active .literature-portal,
+        body.dark-mode-active .submission {
             background: #333;
         }
         
@@ -1054,7 +1124,8 @@
         body.dark-mode-active .work-meta,
         body.dark-mode-active .work-stats,
         body.dark-mode-active .countdown-label,
-        body.dark-mode-active .portal-card p {
+        body.dark-mode-active .portal-card p,
+        body.dark-mode-active .member-role {
             color: #aaa;
         }
         
@@ -1092,6 +1163,18 @@
         
         body.dark-mode-active .no-results {
             color: #aaa;
+        }
+        
+        body.dark-mode-active .filter-btn {
+            background: #2d2d2d;
+            color: #e0e0e0;
+            border-color: #8B4513;
+        }
+        
+        body.dark-mode-active .filter-btn.active, 
+        body.dark-mode-active .filter-btn:hover {
+            background: var(--primary);
+            color: white;
         }
         
         /* 修复深色模式下导航栏颜色问题 */
@@ -1146,6 +1229,13 @@
                 text-align: center;
             }
         }
+        
+        /* 加载更多按钮 */
+        .load-more {
+            text-align: center;
+            margin-top: 40px;
+            display: none; /* 隐藏加载更多按钮 */
+        }
     </style>
 </head>
 <body>
@@ -1174,6 +1264,7 @@
                     <li><a href="#works">作品展示</a></li>
                     <li><a href="#events">近期活动</a></li>
                     <li><a href="#members">社员风采</a></li>
+                    <li><a href="#submission">投稿</a></li>
                     <li><a href="#literature">文学网站</a></li>
                     <li><a href="#contact">联系我们</a></li>
                 </ul>
@@ -1221,140 +1312,23 @@
                 <div class="search-results" id="searchResults"></div>
             </div>
             
-            <!-- 轮播作品展示 -->
-            <div class="works-carousel">
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="work-card">
-                                <div class="work-image">
-                                    <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=1974&auto=format&fit=crop" alt="灯火可亲处，山河万里明">
-                                </div>
-                                <div class="work-content">
-                                    <h3>《灯火可亲处，山河万里明》</h3>
-                                    <div class="work-meta"> 高一 ·文本· ——24210贺骞容 · 2025年5月</div>
-                                    <p>时光的指尖叩响记忆的门扉，那些曾以生命为炬火照亮人间长夜的伟人，如同永不熄灭的灯盏...</p>
-                                    <div class="work-stats">
-                                        <span><i class="fas fa-heart"></i> 128</span>
-                                        <span style="margin-left: 15px;"><i class="fas fa-comment"></i> 24</span>
-                                    </div>
-                                    <a href="#" class="btn read-more-btn" 
-                                       style="background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-top: 10px;"
-                                       data-title="灯火可亲处，山河万里明"
-                                       data-meta="高一 ·文本· ——24210贺骞容 · 2025年5月"
-                                       data-image="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=1974&auto=format&fit=crop"
-                                       data-content="<p>时光的指尖叩响记忆的门扉，那些曾以生命为炬火照亮人间长夜的伟人，如同永不熄灭的灯盏...</p><p>当我们回望历史长河，总有一些人的身影如同明灯，照亮了人类文明的前行之路。他们或许身处不同的时代，来自不同的国度，但都以自己的方式为这个世界带来了光明。</p><p>鲁迅先生便是这样一盏灯。在那个黑暗的年代，他以笔为刀，剖开社会的脓疮，唤醒沉睡的国民。他的文字如炬，照亮了多少青年前行的道路...</p><p>全文内容继续...</p>">
-                                       阅读全文
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="work-card">
-                                <div class="work-image">
-                                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1998&auto=format&fit=crop" alt="怜落花有意，恨流水无情">
-                                </div>
-                                <div class="work-content">
-                                    <h3>怜落花有意，恨流水无情</h3>
-                                    <div class="work-meta">高一 · ——24212张梓涵 · 2025年5月</div>
-                                    <p>每每读红楼，总是意难平。忘不了那桃林深处，默默葬花的倩影，哭的好不伤感...</p>
-                                    <div class="work-stats">
-                                        <span><i class="fas fa-heart"></i> 96</span>
-                                        <span style="margin-left: 15px;"><i class="fas fa-comment"></i> 18</span>
-                                    </div>
-                                    <a href="#" class="btn read-more-btn" 
-                                       style="background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-top: 10px;"
-                                       data-title="怜落花有意，恨流水无情"
-                                       data-meta="高一 · ——24212张梓涵 · 2025年5月"
-                                       data-image="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1998&auto=format&fit=crop"
-                                       data-content="<p>每每读红楼，总是意难平。忘不了那桃林深处，默默葬花的倩影，哭的好不伤感...</p><p>黛玉葬花，葬的不仅是落红，更是她自己的命运。那飘零的花瓣，恰似她寄人篱下的身世。花谢花飞飞满天，红消香断有谁怜？</p><p>在这大观园中，黛玉是最清醒的孤独者。她看透了这繁华背后的虚妄，却无力改变自己的命运。她的诗，她的泪，她的情，最终都随着那花瓣一起埋葬...</p><p>全文内容继续...</p>">
-                                       阅读全文
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="work-card">
-                                <div class="work-image">
-                                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2053&auto=format&fit=crop" alt="玉米的命运">
-                                </div>
-                                <div class="work-content">
-                                    <h3>玉米的命运</h3>
-                                    <div class="work-meta">高二 · ——2303张艳斌 · 2025年4月</div>
-                                    <p>太阳悬挂在空中灼烧着。"爸，好热啊。"玉米田中矮矮的吴难望着在玉米地中控制着大怪兽的吴灾，热气在空中沸腾，玉米被蒸熟般地冒出香气...</p>
-                                    <div class="work-stats">
-                                        <span><i class="fas fa-heart"></i> 152</span>
-                                        <span style="margin-left: 15px;"><i class="fas fa-comment"></i> 32</span>
-                                    </div>
-                                    <a href="#" class="btn read-more-btn" 
-                                       style="background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-top: 10px;"
-                                       data-title="玉米的命运"
-                                       data-meta="高二 · ——2303张艳斌 · 2025年4月"
-                                       data-image="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2053&auto=format&fit=crop"
-                                       data-content="<p>太阳悬挂在空中灼烧着。"爸，好热啊。"玉米田中矮矮的吴难望着在玉米地中控制着大怪兽的吴灾，热气在空中沸腾，玉米被蒸熟般地冒出香气...</p><p>吴灾操纵着联合收割机，金黄的玉米粒如瀑布般倾泻入车斗。这钢铁怪兽一天能收割五十亩地，是二十个壮劳力一周的工作量。吴难看着父亲被汗水浸透的背影，想起了爷爷讲过的故事...</p><p>三十年前，这片土地上的玉米还是手工收割。全家人天不亮就下地，一穗一穗地掰，一筐一筐地背，直到月上中天...</p><p>全文内容继续...</p>">
-                                       阅读全文
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="work-card">
-                                <div class="work-image">
-                                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop" alt="山城记忆">
-                                </div>
-                                <div class="work-content">
-                                    <h3>山城记忆</h3>
-                                    <div class="work-meta">高三 · ——2205王思睿 · 2025年3月</div>
-                                    <p>雾气弥漫的清晨，青石板路上留下昨夜的雨迹。街角的老茶馆里，铜壶咕噜噜地冒着热气...</p>
-                                    <div class="work-stats">
-                                        <span><i class="fas fa-heart"></i> 210</span>
-                                        <span style="margin-left: 15px;"><i class="fas fa-comment"></i> 45</span>
-                                    </div>
-                                    <a href="#" class="btn read-more-btn" 
-                                       style="background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-top: 10px;"
-                                       data-title="山城记忆"
-                                       data-meta="高三 · ——2205王思睿 · 2025年3月"
-                                       data-image="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop"
-                                       data-content="<p>雾气弥漫的清晨，青石板路上留下昨夜的雨迹。街角的老茶馆里，铜壶咕噜噜地冒着热气...</p><p>陈老汉像往常一样，五点起床，生火烧水，擦拭那张用了三十年的八仙桌。茶馆的木板墙被岁月熏得发黑，墙上挂着的老黄历还停留在上个月。</p><p>"老陈，来碗沱茶！"第一个客人总是张铁匠，他粗糙的大手握着小小的茶杯，在晨光中讲述着山城昨夜的新闻...</p><p>全文内容继续...</p>">
-                                       阅读全文
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 新增作品 -->
-                        <div class="swiper-slide">
-                            <div class="work-card">
-                                <div class="work-image">
-                                    <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=2069&auto=format&fit=crop" alt="青藤巷">
-                                </div>
-                                <div class="work-content">
-                                    <h3>青藤巷</h3>
-                                    <div class="work-meta">高二 · ——2315李思源 · 2025年6月</div>
-                                    <p>青藤巷的夏天总是特别长，蝉鸣从早到晚，巷口的老槐树投下浓密的绿荫，像一把巨大的伞...</p>
-                                    <div class="work-stats">
-                                        <span><i class="fas fa-heart"></i> 186</span>
-                                        <span style="margin-left: 15px;"><i class="fas fa-comment"></i> 32</span>
-                                    </div>
-                                    <a href="#" class="btn read-more-btn" 
-                                       style="background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-top: 10px;"
-                                       data-title="青藤巷"
-                                       data-meta="高二 · ——2315李思源 · 2025年6月"
-                                       data-image="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=2069&auto=format&fit=crop"
-                                       data-content="<p>青藤巷的夏天总是特别长，蝉鸣从早到晚，巷口的老槐树投下浓密的绿荫，像一把巨大的伞...</p><p>阿婆坐在藤椅上，摇着蒲扇，给我们讲那些老故事。她说青藤巷以前不叫青藤巷，叫状元巷，因为明朝出过一位状元郎...</p><p>全文内容继续...</p>">
-                                       阅读全文
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
+            <!-- 作品分类过滤 -->
+            <div class="works-filter">
+                <div class="filter-btn active" data-filter="all">全部</div>
+                <div class="filter-btn" data-filter="prose">散文</div>
+                <div class="filter-btn" data-filter="poetry">诗歌</div>
+                <div class="filter-btn" data-filter="fiction">小说</div>
+                <div class="filter-btn" data-filter="essay">随笔</div>
+            </div>
+            
+            <!-- 作品网格 -->
+            <div class="works-grid">
+                <!-- 作品卡片将通过JavaScript动态生成 -->
+            </div>
+            
+            <!-- 加载更多按钮 (已隐藏) -->
+            <div class="load-more">
+                <button class="btn btn-outline" id="loadMore">加载更多作品</button>
             </div>
         </div>
     </section>
@@ -1403,7 +1377,7 @@
                     <div class="event-details">
                         <h3>《百年孤独》读书分享会</h3>
                         <p><strong>时间：</strong>2025年6月25日 18:30-21:00</p>
-                        <p><strong>地点：</strong>未定</p>
+                        <p><strong>地点：</strong>校园咖啡厅</p>
                         <p>一起探讨马尔克斯的魔幻现实主义世界，分享阅读感悟与理解。</p>
                         <div class="countdown">
                             <div class="countdown-item">
@@ -1434,7 +1408,7 @@
                     <div class="event-details">
                         <h3>新社员招募暨迎新会</h3>
                         <p><strong>时间：</strong>2025年9月15日 18:00-20:00</p>
-                        <p><strong>地点：</strong>特立体育馆</p>
+                        <p><strong>地点：</strong>学生活动中心大厅</p>
                         <p>欢迎所有热爱文学的同学加入，了解社团历史与活动安排。</p>
                         <div class="countdown">
                             <div class="countdown-item">
@@ -1467,50 +1441,102 @@
             <div class="members-grid">
                 <div class="member-card animate">
                     <div class="member-avatar">
-                        <img src="" alt="贺骞容">
-                    </div>
-                    <h3>贺骞容</h3>
-                    <div class="member-role">副社长</div>
-                    <p>"写作是我与世界对话的方式，每个字都是心跳的印记。"</p>
-                    <div class="member-bio">
-                        <p>未编辑。</p>
-                    </div>
-                </div>
-                
-                <div class="member-card animate delay-1">
-                    <div class="member-avatar">
-                        <img src="" alt="侯琼">
+                        <i class="fas fa-user"></i>
                     </div>
                     <h3>侯琼</h3>
                     <div class="member-role">主编</div>
                     <p>"文字是心灵的镜子，映照出最真实的自我。"</p>
                     <div class="member-bio">
-                        <p>未编辑。</p>
+                        <p>负责文学社刊物编辑工作，擅长散文和文学评论。</p>
                     </div>
                 </div>
                 
-                <div class="member-card animate delay-2">
+                <div class="member-card animate delay-1">
                     <div class="member-avatar">
-                        <img src="" alt="余燕">
+                        <i class="fas fa-user"></i>
                     </div>
                     <h3>余燕</h3>
                     <div class="member-role">副主编</div>
                     <p>"每一篇文章都是作者灵魂的独白。"</p>
                     <div class="member-bio">
-                        <p>未编辑。</p>
+                        <p>热爱诗歌创作，多次在校内外文学比赛中获奖。</p>
                     </div>
                 </div>
                 
-                <div class="member-card animate delay-3">
+                <div class="member-card animate delay-2">
                     <div class="member-avatar">
-                        <img src="" alt="李军">
+                        <i class="fas fa-user"></i>
                     </div>
                     <h3>李军</h3>
                     <div class="member-role">社长</div>
                     <p>"文学社是一个大家庭，我们在这里互相启发，共同成长。"</p>
                     <div class="member-bio">
-                        <p>未编辑。</p>
+                        <p>负责社团日常管理和活动策划，擅长小说创作。</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 投稿部分 -->
+    <section class="submission" id="submission">
+        <div class="container">
+            <h2 class="animate">投稿</h2>
+            <div class="submission-form animate delay-1">
+                <h3>投稿申请</h3>
+                <form id="submission-form">
+                    <div class="form-group">
+                        <label for="submission-name">姓名</label>
+                        <input type="text" id="submission-name" name="name" placeholder="请输入您的姓名" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="submission-email">邮箱</label>
+                        <input type="email" id="submission-email" name="email" placeholder="请输入您的邮箱" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="submission-phone">电话</label>
+                        <input type="tel" id="submission-phone" name="phone" placeholder="请输入您的电话">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="submission-grade">年级</label>
+                        <select id="submission-grade" name="grade" required>
+                            <option value="">请选择年级</option>
+                            <option value="高一">高一</option>
+                            <option value="高二">高二</option>
+                            <option value="高三">高三</option>
+                            <option value="教师">教师</option>
+                            <option value="社会人员">社会人员</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="submission-type">作品类型</label>
+                        <select id="submission-type" name="type" required>
+                            <option value="">请选择作品类型</option>
+                            <option value="prose">散文</option>
+                            <option value="poetry">诗歌</option>
+                            <option value="fiction">小说</option>
+                            <option value="essay">随笔</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="submission-title">作品标题</label>
+                        <input type="text" id="submission-title" name="title" placeholder="请输入作品标题" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="submission-content">作品内容</label>
+                        <textarea id="submission-content" name="content" placeholder="请输入您的作品内容..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">提交投稿</button>
+                </form>
+                <div id="submission-success-message" class="success-message">
+                    投稿已提交成功！我们将尽快审核并与您联系。
                 </div>
             </div>
         </div>
@@ -1574,132 +1600,6 @@
                         <h3>上海文学</h3>
                         <p>上海市作家协会主办的文学月刊</p>
                         <a href="http://shwx.zuojia.org.cn/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-2">
-                        <div class="portal-icon">
-                            <i class="fas fa-book-reader"></i>
-                        </div>
-                        <h3>当代作家</h3>
-                        <p>湖北省作家协会主办的大型文学期刊</p>
-                        <a href="http://www.ddzjw.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-3">
-                        <div class="portal-icon">
-                            <i class="fas fa-newspaper"></i>
-                        </div>
-                        <h3>中国诗歌网</h3>
-                        <p>中国作家协会诗歌委员会主办</p>
-                        <a href="https://www.zgshige.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate">
-                        <div class="portal-icon">
-                            <i class="fas fa-feather-alt"></i>
-                        </div>
-                        <h3>小说月报</h3>
-                        <p>百花文艺出版社主办的文学期刊</p>
-                        <a href="http://xsyb.bhp.com.cn/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-1">
-                        <div class="portal-icon">
-                            <i class="fas fa-book-medical"></i>
-                        </div>
-                        <h3>儿童文学</h3>
-                        <p>中国少年儿童新闻出版总社主办</p>
-                        <a href="http://www.ccppg.com.cn/etwx/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-2">
-                        <div class="portal-icon">
-                            <i class="fas fa-scroll"></i>
-                        </div>
-                        <h3>散文</h3>
-                        <p>百花文艺出版社主办的散文月刊</p>
-                        <a href="http://sanwen.bhp.com.cn/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-3">
-                        <div class="portal-icon">
-                            <i class="fas fa-pen-fancy"></i>
-                        </div>
-                        <h3>北京文学</h3>
-                        <p>北京市文联主办的文学月刊</p>
-                        <a href="http://www.bjwxzz.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate">
-                        <div class="portal-icon">
-                            <i class="fas fa-bookmark"></i>
-                        </div>
-                        <h3>青年文学</h3>
-                        <p>中国青年出版社主办的文学期刊</p>
-                        <a href="http://qnwx.qikan.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-1">
-                        <div class="portal-icon">
-                            <i class="fas fa-book-dead"></i>
-                        </div>
-                        <h3>民族文学</h3>
-                        <p>中国作家协会主办的少数民族文学期刊</p>
-                        <a href="http://www.mzwxzz.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-2">
-                        <div class="portal-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3>译林</h3>
-                        <p>江苏译林出版社主办的外国文学期刊</p>
-                        <a href="http://www.yilin.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-3">
-                        <div class="portal-icon">
-                            <i class="fas fa-dragon"></i>
-                        </div>
-                        <h3>湖南文学</h3>
-                        <p>湖南省作家协会主办的文学月刊</p>
-                        <a href="http://www.hunanwenxue.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate">
-                        <div class="portal-icon">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <h3>文学报</h3>
-                        <p>中国作家协会主管的文学专业报纸</p>
-                        <a href="http://www.wenxuebao.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-1">
-                        <div class="portal-icon">
-                            <i class="fas fa-feather"></i>
-                        </div>
-                        <h3>中国校园文学</h3>
-                        <p>面向青少年的文学期刊</p>
-                        <a href="http://www.zgxywx.com/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-2">
-                        <div class="portal-icon">
-                            <i class="fas fa-book-spells"></i>
-                        </div>
-                        <h3>世界文学</h3>
-                        <p>中国社会科学院外国文学研究所主办</p>
-                        <a href="http://www.worldliterature.org.cn/" target="_blank" class="portal-link">访问网站</a>
-                    </div>
-                    
-                    <div class="portal-card animate delay-3">
-                        <div class="portal-icon">
-                            <i class="fas fa-hat-wizard"></i>
-                        </div>
-                        <h3>中国现代文学馆</h3>
-                        <p>中国现代文学资料收藏研究中心</p>
-                        <a href="http://www.wxg.org.cn/" target="_blank" class="portal-link">访问网站</a>
                     </div>
                 </div>
             </div>
@@ -1778,7 +1678,7 @@
                 
                 <div class="contact-form animate delay-1">
                     <h3>加入申请</h3>
-                    <form id="membership-form" action="https://formspree.io/f/mwpbgngv" method="POST">
+                    <form id="membership-form">
                         <div class="form-group">
                             <label for="name">姓名</label>
                             <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
@@ -1803,7 +1703,6 @@
                                 <option value="高三">高三</option>
                                 <option value="教师">教师</option>
                                 <option value="社会人员">社会人员</option>
-                                <option value="这是一个bata版本">这是一个bata版本</option>
                             </select>
                         </div>
                         
@@ -1817,13 +1716,10 @@
                             <textarea id="message" name="message" placeholder="请简单介绍自己并说明为什么想加入我们..." required></textarea>
                         </div>
                         
-                        <input type="hidden" name="_subject" value="新笔文学社申请：来自网站">
-                        <input type="text" name="_gotcha" style="display:none">
-                        
                         <button type="submit" class="btn">提交申请</button>
                     </form>
                     <div id="success-message" class="success-message">
-                        申请已提交成功！我们将尽快与您联系！（请不要反复提交）。
+                        申请已提交成功！我们将尽快与您联系。
                     </div>
                 </div>
             </div>
@@ -1866,6 +1762,12 @@
             <div class="article-content" id="modalArticleContent">
                 <!-- 文章内容将通过JavaScript动态加载 -->
             </div>
+            <div class="article-actions">
+                <span><i class="far fa-heart"></i> <span id="likeCount">0</span> 喜欢</span>
+                <span><i class="far fa-bookmark"></i> 收藏</span>
+                <span><i class="far fa-comment"></i> 评论</span>
+                <span><i class="fas fa-share-alt"></i> 分享</span>
+            </div>
         </div>
     </div>
 
@@ -1879,6 +1781,100 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     <script>
+        // 作品数据
+        const worksData = [
+            {
+                id: 1,
+                title: "灯火可亲处，山河万里明",
+                author: "贺骞容",
+                grade: "高一",
+                class: "24210",
+                date: "2025年5月",
+                category: "prose",
+                image: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=1974&auto=format&fit=crop",
+                excerpt: "时光的指尖叩响记忆的门扉，那些曾以生命为炬火照亮人间长夜的伟人，如同永不熄灭的灯盏...",
+                likes: 128,
+                comments: 24,
+                content: `
+                    <p>时光的指尖叩响记忆的门扉，那些曾以生命为炬火照亮人间长夜的伟人，如同永不熄灭的灯盏，在历史的长廊中熠熠生辉。他们的光芒穿透时间的迷雾，照亮我们前行的道路，让我们在茫茫人海中不再迷失方向。</p>
+                    <p>当我们回望历史长河，总有一些人的身影如同明灯，照亮了人类文明的前行之路。他们或许身处不同的时代，来自不同的国度，但都以自己的方式为这个世界带来了光明。</p>
+                    <p>鲁迅先生便是这样一盏灯。在那个黑暗的年代，他以笔为刀，剖开社会的脓疮，唤醒沉睡的国民。他的文字如炬，照亮了多少青年前行的道路。《狂人日记》中那"救救孩子"的呐喊，至今仍在我们的耳畔回响。</p>
+                    <p>灯火的温暖，不仅在于它的明亮，更在于它所传递的希望。在寒冷的冬夜，一盏孤灯足以温暖整个心房；在迷茫的时刻，一句箴言足以指引人生的方向。我们每个人都可以成为一盏灯，无论光芒大小，都能为这个世界增添一分光明。</p>
+                    <p>山河万里，灯火可亲。在这片古老而神奇的土地上，无数盏明灯正在点亮。他们或许是辛勤耕耘的教师，或许是救死扶伤的医生，或许是默默奉献的志愿者。他们用平凡的行动书写着不平凡的人生，用微光汇聚成照亮时代的光芒。</p>
+                    <p>作为新时代的青年，我们应当继承这些灯火精神，用自己的方式发光发热。无论是通过文字、艺术，还是通过科技创新、社会服务，我们都可以成为那盏照亮他人前行的灯。</p>
+                    <p>让我们携手同行，在灯火可亲处，共同书写山河万里的明天。让每一盏灯都不再孤单，让每一份光明都能传递，让这个世界因我们的存在而更加明亮温暖。</p>
+                `
+            },
+            {
+                id: 2,
+                title: "怜落花有意，恨流水无情",
+                author: "张梓涵",
+                grade: "高一",
+                class: "24212",
+                date: "2025年5月",
+                category: "essay",
+                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1998&auto=format&fit=crop",
+                excerpt: "每每读红楼，总是意难平。忘不了那桃林深处，默默葬花的倩影，哭的好不伤感...",
+                likes: 96,
+                comments: 18,
+                content: `
+                    <p>每每读红楼，总是意难平。忘不了那桃林深处，默默葬花的倩影，哭的好不伤感。那落花飘零的景象，恰似黛玉脆弱而美丽的生命，在春风中摇曳，最终归于尘土。</p>
+                    <p>黛玉葬花，葬的不仅是落红，更是她自己的命运。那飘零的花瓣，恰似她寄人篱下的身世。花谢花飞飞满天，红消香断有谁怜？她用自己的方式，为这些无声的生命举行了一场庄严的葬礼，也为自己提前哀悼。</p>
+                    <p>在这大观园中，黛玉是最清醒的孤独者。她看透了这繁华背后的虚妄，却无力改变自己的命运。她的诗，她的泪，她的情，最终都随着那花瓣一起埋葬。她与宝玉的情缘，也如落花流水般，虽有意却终难相守。</p>
+                    <p>流水无情，带走了落花，也带走了时光。大观园的繁华终究是一场梦，梦醒时分，一切都已成空。那些美好的青春岁月，那些真挚的情感交流，都被无情的流水冲刷得干干净净。</p>
+                    <p>而我们又何尝不是如此？在时间的长河中，我们都是那飘零的落花，随波逐流，不知归处。但我们能够做的，或许就是像黛玉一样，即使知道最终结局，也要保持自己的本真，活出生命的尊严与美丽。</p>
+                    <p>怜落花有意，恨流水无情。但这世间的情与恨，本就如梦如幻。唯有珍惜当下，用心感受生命中的每一份美好，才不辜负这短暂而珍贵的人生。</p>
+                `
+            },
+            {
+                id: 3,
+                title: "玉米的命运",
+                author: "张艳斌",
+                grade: "高二",
+                class: "2303",
+                date: "2025年4月",
+                category: "fiction",
+                image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2053&auto=format&fit=crop",
+                excerpt: "太阳悬挂在空中灼烧着。'爸，好热啊。'玉米田中矮矮的吴难望着在玉米地中控制着大怪兽的吴灾，热气在空中沸腾，玉米被蒸熟般地冒出香气...",
+                likes: 152,
+                comments: 32,
+                content: `
+                    <p>太阳悬挂在空中灼烧着。"爸，好热啊。"玉米田中矮矮的吴难望着在玉米地中控制着大怪兽的吴灾，热气在空中沸腾，玉米被蒸熟般地冒出香气。这钢铁怪兽一天能收割五十亩地，是二十个壮劳力一周的工作量。</p>
+                    <p>吴灾操纵着联合收割机，金黄的玉米粒如瀑布般倾泻入车斗。他的脸上没有丰收的喜悦，只有深深的忧虑。今年的玉米价格又跌了，算上种子、化肥和这台收割机的贷款，怕是又要亏本。</p>
+                    <p>吴难看着父亲被汗水浸透的背影，想起了爷爷讲过的故事。三十年前，这片土地上的玉米还是手工收割。全家人天不亮就下地，一穗一穗地掰，一筐一筐地背，直到月上中天。虽然辛苦，但那时候的玉米值钱，一斤能换三斤白面。</p>
+                    <p>现在呢？机器代替了人工，效率提高了，但玉米的价格却越来越低。村里的年轻人大多外出打工，留下的都是老人和孩子。土地，这片祖祖辈辈赖以生存的土地，正在失去它的魅力。</p>
+                    <p>吴难走到地头，拿起一穗被机器遗漏的玉米。他仔细地剥开外衣，露出金灿灿的籽粒。这玉米真漂亮，像是由阳光直接凝结而成的。但他知道，这美丽的玉米换不来好价钱，换不来父亲紧锁的眉头舒展。</p>
+                    <p>晚上，吴灾坐在门槛上抽烟，望着院子里堆积如山的玉米发呆。吴难走过去，靠在父亲身边。"爸，我以后要学农业，让咱们的玉米能卖好价钱。"吴灾愣了一下，然后摸了摸儿子的头，嘴角露出一丝苦笑。</p>
+                    <p>玉米的命运，何尝不是农民的命运？何尝不是这片土地的命运？在现代化的大潮中，传统农业正在经历着前所未有的变革。而这变革中的酸甜苦辣，只有亲身经历的人才能体会。</p>
+                    <p>夜深了，月光洒在玉米堆上，泛着银色的光。吴难梦见自己成了农业科学家，培育出了五彩的玉米，城里人抢着买，父亲笑了，笑得那么开心...</p>
+                `
+            },
+            {
+                id: 4,
+                title: "山城记忆",
+                author: "王思睿",
+                grade: "高三",
+                class: "2205",
+                date: "2025年3月",
+                category: "prose",
+                image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop",
+                excerpt: "雾气弥漫的清晨，青石板路上留下昨夜的雨迹。街角的老茶馆里，铜壶咕噜噜地冒着热气...",
+                likes: 210,
+                comments: 45,
+                content: `
+                    <p>雾气弥漫的清晨，青石板路上留下昨夜的雨迹。街角的老茶馆里，铜壶咕噜噜地冒着热气，茶香混合着晨雾，在山城的街巷间弥漫。这是我最熟悉的故乡味道，是无论走到哪里都难以忘怀的记忆。</p>
+                    <p>陈老汉像往常一样，五点起床，生火烧水，擦拭那张用了三十年的八仙桌。茶馆的木板墙被岁月熏得发黑，墙上挂着的老黄历还停留在上个月。他说不用换，时间在这里是静止的。</p>
+                    <p>"老陈，来碗沱茶！"第一个客人总是张铁匠，他粗糙的大手握着小小的茶杯，在晨光中讲述着山城昨夜的新闻。谁家的孩子考上了大学，哪条街又要拆迁了，都是这座小城的大事。</p>
+                    <p>我最喜欢坐在角落的位置，看着阳光慢慢爬过门槛，照亮空气中飞舞的尘埃。这里的时间很慢，慢到可以听见茶叶舒展的声音，可以数清屋檐滴下的水珠。</p>
+                    <p>山城是建在坡上的，街道起起伏伏，石阶蜿蜒。小时候，我总喜欢数着台阶上学，一共是三百八十六级。现在很多台阶都被改成了马路，但我依然记得那些被脚步磨得光滑的石板。</p>
+                    <p>傍晚时分，炊烟从各家各户的烟囱里升起，混合着炒菜的香味。母亲站在家门口喊孩子回家吃饭的声音，此起彼伏。那时候没有手机，但整个山城就是一个大家庭，谁家有事，喊一嗓子就行。</p>
+                    <p>如今的山城变了样。高楼大厦拔地而起，老街巷大多被拆除。老茶馆所在的那条街，明年也要拆迁了。陈老汉说，他就不搬了，这茶馆开了几十年，就像一棵老树，挪了地方就活不成了。</p>
+                    <p>我知道，时代总要前进，变化无可避免。但我希望，至少在这山城的记忆中，还能保留那一碗沱茶的清香，保留那青石板路上的脚步声，保留那晨雾中飘荡的乡音。</p>
+                    <p>因为这些都是山城的魂，是我们这些山城孩子心中永远的故乡。</p>
+                `
+            }
+        ];
+
         // 移动端菜单切换
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('nav');
@@ -1956,62 +1952,48 @@
                 submitBtn.disabled = true;
                 submitBtn.textContent = '提交中...';
                 
-                try {
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
+                // 模拟网络请求
+                setTimeout(() => {
+                    successMessage.style.display = 'block';
+                    form.reset();
                     
-                    if (response.ok) {
-                        successMessage.style.display = 'block';
-                        form.reset();
-                        setTimeout(() => {
-                            successMessage.style.display = 'none';
-                        }, 5000);
-                    } else {
-                        alert('提交失败，请稍后再试。');
-                    }
-                } catch (error) {
-                    alert('网络错误，请检查您的连接。');
-                } finally {
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                    
                     submitBtn.disabled = false;
                     submitBtn.textContent = '提交申请';
-                }
+                }, 1500);
             });
         }
         
-        // 初始化作品轮播
-        const swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                },
-                992: {
-                    slidesPerView: 3,
-                },
-                1200: {
-                    slidesPerView: 4,
-                }
-            }
-        });
+        // 投稿表单提交处理
+        const submissionForm = document.getElementById('submission-form');
+        const submissionSuccessMessage = document.getElementById('submission-success-message');
+        
+        if (submissionForm) {
+            submissionForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // 显示加载状态
+                const submitBtn = submissionForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = '提交中...';
+                
+                // 模拟网络请求
+                setTimeout(() => {
+                    submissionSuccessMessage.style.display = 'block';
+                    submissionForm.reset();
+                    
+                    setTimeout(() => {
+                        submissionSuccessMessage.style.display = 'none';
+                    }, 5000);
+                    
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '提交投稿';
+                }, 1500);
+            });
+        }
         
         // 活动倒计时
         function updateCountdown() {
@@ -2079,13 +2061,23 @@
         
         // 夜间模式切换
         const darkModeBtn = document.querySelector('.dark-mode');
-        let isDarkMode = false;
+        let isDarkMode = localStorage.getItem('darkMode') === 'true';
+        
+        // 初始化夜间模式
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode-active');
+            darkModeBtn.querySelector('i').classList.remove('fa-moon');
+            darkModeBtn.querySelector('i').classList.add('fa-sun');
+        }
         
         darkModeBtn.addEventListener('click', () => {
             isDarkMode = !isDarkMode;
             document.body.classList.toggle('dark-mode-active', isDarkMode);
             darkModeBtn.querySelector('i').classList.toggle('fa-moon', !isDarkMode);
             darkModeBtn.querySelector('i').classList.toggle('fa-sun', isDarkMode);
+            
+            // 保存用户偏好
+            localStorage.setItem('darkMode', isDarkMode);
             
             // 更新导航栏背景
             const header = document.querySelector('header');
@@ -2100,29 +2092,132 @@
             }
         });
         
+        // 渲染作品卡片
+        function renderWorks(filter = 'all') {
+            const worksGrid = document.querySelector('.works-grid');
+            worksGrid.innerHTML = '';
+            
+            const filteredWorks = filter === 'all' 
+                ? worksData 
+                : worksData.filter(work => work.category === filter);
+            
+            filteredWorks.forEach(work => {
+                const workCard = document.createElement('div');
+                workCard.className = 'work-card animate';
+                workCard.dataset.category = work.category;
+                
+                workCard.innerHTML = `
+                    <div class="work-image">
+                        <img src="${work.image}" alt="${work.title}">
+                        <div class="work-category">${getCategoryName(work.category)}</div>
+                    </div>
+                    <div class="work-content">
+                        <h3>${work.title}</h3>
+                        <div class="work-meta">${work.grade} · ${work.class}班 · ${work.author} · ${work.date}</div>
+                        <p>${work.excerpt}</p>
+                        <div class="work-stats">
+                            <span class="like-btn" data-id="${work.id}"><i class="far fa-heart"></i> ${work.likes}</span>
+                            <span><i class="far fa-comment"></i> ${work.comments}</span>
+                        </div>
+                        <a href="#" class="btn read-more-btn" 
+                           style="background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-top: 10px;"
+                           data-id="${work.id}">
+                           阅读全文
+                        </a>
+                    </div>
+                `;
+                
+                worksGrid.appendChild(workCard);
+            });
+            
+            // 重新初始化动画
+            setTimeout(animateOnScroll, 100);
+        }
+        
+        // 获取分类名称
+        function getCategoryName(category) {
+            const categories = {
+                'prose': '散文',
+                'poetry': '诗歌',
+                'fiction': '小说',
+                'essay': '随笔'
+            };
+            return categories[category] || '未知';
+        }
+        
+        // 初始渲染作品
+        renderWorks();
+        
+        // 作品分类过滤
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderWorks(btn.dataset.filter);
+            });
+        });
+        
         // 文章模态框功能
         const modal = document.getElementById('articleModal');
         const modalTitle = document.getElementById('modalArticleTitle');
         const modalMeta = document.getElementById('modalArticleMeta');
         const modalImage = document.getElementById('modalArticleImage');
         const modalContent = document.getElementById('modalArticleContent');
+        const likeCount = document.getElementById('likeCount');
         const closeBtn = document.querySelector('.close-btn');
         
         // 为所有"阅读全文"按钮添加点击事件
-        document.querySelectorAll('.read-more-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('read-more-btn')) {
                 e.preventDefault();
+                const workId = parseInt(e.target.dataset.id);
+                const work = worksData.find(w => w.id === workId);
                 
-                // 设置模态框内容
-                modalTitle.textContent = this.getAttribute('data-title');
-                modalMeta.textContent = this.getAttribute('data-meta');
-                modalImage.src = this.getAttribute('data-image');
-                modalContent.innerHTML = this.getAttribute('data-content');
+                if (work) {
+                    // 设置模态框内容
+                    modalTitle.textContent = work.title;
+                    modalMeta.textContent = `${work.grade} · ${work.class}班 · ${work.author} · ${work.date}`;
+                    modalImage.src = work.image;
+                    modalContent.innerHTML = work.content;
+                    likeCount.textContent = work.likes;
+                    
+                    // 显示模态框
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            // 点赞功能
+            if (e.target.classList.contains('like-btn') || e.target.parentElement.classList.contains('like-btn')) {
+                const likeBtn = e.target.classList.contains('like-btn') ? e.target : e.target.parentElement;
+                const workId = parseInt(likeBtn.dataset.id);
+                const work = worksData.find(w => w.id === workId);
                 
-                // 显示模态框
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            });
+                if (work) {
+                    // 切换点赞状态
+                    const isActive = likeBtn.classList.contains('active');
+                    if (isActive) {
+                        work.likes--;
+                        likeBtn.classList.remove('active');
+                        likeBtn.querySelector('i').classList.remove('fas');
+                        likeBtn.querySelector('i').classList.add('far');
+                    } else {
+                        work.likes++;
+                        likeBtn.classList.add('active');
+                        likeBtn.querySelector('i').classList.remove('far');
+                        likeBtn.querySelector('i').classList.add('fas');
+                    }
+                    
+                    // 更新点赞数
+                    likeBtn.innerHTML = `<i class="${isActive ? 'far' : 'fas'} fa-heart"></i> ${work.likes}`;
+                    
+                    // 如果模态框显示的是当前作品，更新模态框中的点赞数
+                    if (modal.style.display === 'block' && parseInt(likeCount.textContent) === work.likes - (isActive ? -1 : 1)) {
+                        likeCount.textContent = work.likes;
+                    }
+                }
+            }
         });
         
         // 关闭模态框
@@ -2150,19 +2245,6 @@
         // 搜索功能实现
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
-        const workCards = document.querySelectorAll('.work-card');
-        
-        // 为所有作品卡片添加数据属性
-        workCards.forEach(card => {
-            const title = card.querySelector('h3').textContent;
-            const meta = card.querySelector('.work-meta').textContent;
-            const content = card.querySelector('p').textContent;
-            
-            card.dataset.searchTitle = title.toLowerCase();
-            card.dataset.searchAuthor = meta.split('·')[1].trim().toLowerCase();
-            card.dataset.searchContent = content.toLowerCase();
-            card.dataset.searchMeta = meta.toLowerCase();
-        });
         
         // 搜索功能
         searchInput.addEventListener('input', function() {
@@ -2176,11 +2258,11 @@
             
             let hasResults = false;
             
-            workCards.forEach(card => {
-                const title = card.dataset.searchTitle;
-                const author = card.dataset.searchAuthor;
-                const content = card.dataset.searchContent;
-                const meta = card.dataset.searchMeta;
+            worksData.forEach(work => {
+                const title = work.title.toLowerCase();
+                const author = work.author.toLowerCase();
+                const content = work.excerpt.toLowerCase();
+                const meta = `${work.grade}${work.class}${work.date}`.toLowerCase();
                 
                 if (title.includes(query) || author.includes(query) || content.includes(query) || meta.includes(query)) {
                     hasResults = true;
@@ -2188,9 +2270,9 @@
                     resultItem.className = 'search-result-item';
                     
                     // 高亮匹配部分
-                    const highlightedTitle = highlightMatch(card.querySelector('h3').textContent, query);
-                    const highlightedMeta = highlightMatch(card.querySelector('.work-meta').textContent, query);
-                    const highlightedContent = highlightMatch(card.querySelector('p').textContent, query).substring(0, 100) + '...';
+                    const highlightedTitle = highlightMatch(work.title, query);
+                    const highlightedMeta = highlightMatch(`${work.grade} · ${work.class}班 · ${work.author} · ${work.date}`, query);
+                    const highlightedContent = highlightMatch(work.excerpt, query);
                     
                     resultItem.innerHTML = `
                         <div class="search-result-title">${highlightedTitle}</div>
@@ -2200,19 +2282,17 @@
                     
                     resultItem.addEventListener('click', () => {
                         // 点击搜索结果时显示对应的文章
-                        const readMoreBtn = card.querySelector('.read-more-btn');
-                        if (readMoreBtn) {
-                            modalTitle.textContent = readMoreBtn.getAttribute('data-title');
-                            modalMeta.textContent = readMoreBtn.getAttribute('data-meta');
-                            modalImage.src = readMoreBtn.getAttribute('data-image');
-                            modalContent.innerHTML = readMoreBtn.getAttribute('data-content');
-                            
-                            modal.style.display = 'block';
-                            document.body.style.overflow = 'hidden';
-                        }
+                        modalTitle.textContent = work.title;
+                        modalMeta.textContent = `${work.grade} · ${work.class}班 · ${work.author} · ${work.date}`;
+                        modalImage.src = work.image;
+                        modalContent.innerHTML = work.content;
+                        likeCount.textContent = work.likes;
+                        
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
                         
                         searchResults.style.display = 'none';
-                        searchInput.value = card.querySelector('h3').textContent;
+                        searchInput.value = work.title;
                     });
                     
                     searchResults.appendChild(resultItem);
